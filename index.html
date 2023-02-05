@@ -11,13 +11,24 @@
 </head>
 
 <body>
-    <div class="p-4">
-        <button onclick="update()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Carrera completa</button>
-        <button onclick="printScreen()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Imprimir</button>
-        <button onclick="race()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Carrera</button>
-        <button onclick="info()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Info</button>
+    <h1 class="text-4xl text-center">Carrera de avestruces</h1>
+    <div class="p-4 flex justify-center flex-col">
+        <label for="ostrichesNumber" class="text-xl">Número de avestruces</label>
+        <input type="number" id="numero" name="ostrichesNumber" class="border border-black rounded">
+        <label for="velocidad" class="text-xl">Velocidad</label>
+        <select name="velocidad" id="velocidad" class="border border-black rounded">
+            <option value="1">Lento</option>
+            <option value="2">Normal</option>
+            <option value="3">Rápido</option>
+        </select>
+        <br>
+        <br>
+        <button onclick="update()" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Carrera completa</button>
+        <button onclick="printScreen()" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Reset</button>
+        <!-- <button onclick="race()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Carrera</button> -->
     </div>
-    <div id="app" class="flex flex-col rounded-lg items-start border border-black m-4 p-4">
+
+    <div style="background-image: url('');" id="app" class="flex flex-col rounded-lg items-start border border-black m-4 p-4">
 
     </div>
 </body>
