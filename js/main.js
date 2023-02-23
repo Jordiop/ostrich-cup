@@ -2,6 +2,7 @@
 var interval;
 var numero;
 var randomizador;
+var dinero;
 
 function printScreen() {
     const app = document.getElementById("app");
@@ -12,13 +13,14 @@ function printScreen() {
     }
     for (let i = 0; i < numero; i++) {
         let container = document.createElement("div");
-        container.innerHTML = '<div class="flex">' + i + '<img id="ostrich' + i + '" src="ostrich.gif" class="ostrich relative h-[8rem]" alt="ostrich"></div>'
+        container.innerHTML = '<div class="flex">' + i + '<img id="ostrich' + i + '" src="../assets/ostrich.gif" class="ostrich relative h-[8rem]" alt="ostrich"></div>'
         app.appendChild(container);
     }
     ostrichesList = document.getElementsByClassName("ostrich");
 }
 
 function race() {
+    let ganadora = document.getElementById("ganadora").value;
     let game = true;
     let velocidad = document.getElementById("velocidad").value;
     if (velocidad == 1) {
@@ -28,15 +30,15 @@ function race() {
     } else if (velocidad == 3) {
         velocidad = 5;
     }
-    console.log(velocidad)
     ostrichesList = document.getElementsByClassName("ostrich");
     randomizador = Math.floor(Math.random() * (numero));
-    if (ostrichesList[randomizador].offsetLeft == 600) {
-        console.log(ostrichesList[randomizador] + "murió")
-        ostrichesList[randomizador].remove();
-        ostrichesList = document.getElementsByClassName("ostrich");
-    } else if (ostrichesList[randomizador].offsetLeft >= document.getElementById("app").offsetWidth - 50) {
-        console.log("Ganó la " + randomizador);
+    if (ostrichesList[randomizador].offsetLeft >= document.getElementById("app").offsetWidth - 50) {
+        alert("Ganó la " + randomizador);
+        if (ganadora == randomizador) {
+            alert("Has ganado");
+        } else {
+            alert("Has perdido");
+        }
         reset();
     } else {
         let random = Math.floor(Math.random() * (velocidad - (0)));
@@ -62,5 +64,9 @@ function reset() {
 
 function update() {
     printScreen();
+    let ganadora = document.getElementById("ganadora").value;
+    if (ganadora == null) {
+        alert("No has seleccionado ninguna apuesta, así que no ganas nada");
+    }
     interval = setInterval(race, 10);
 }
